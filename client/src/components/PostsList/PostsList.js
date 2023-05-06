@@ -102,13 +102,15 @@ const PostsList = () => {
               >
                 Edit
               </button>
-              <button
-                disabled={!isAuth}
-                onClick={() => handleDelete(post._id)}
-                className={styles.deletebtn}
-              >
-                Delete
-              </button>
+
+              {isAuth && (
+                <button
+                  onClick={() => handleDelete(post._id)}
+                  className={styles.deletebtn}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </li>
         ))}
