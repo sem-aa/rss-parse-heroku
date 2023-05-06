@@ -1,20 +1,25 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const Post = require("./models/Post");
 const parseRSS = require("./rssParser");
 const cron = require("node-cron");
 const authRoutes = require("./routes/auth");
 const postsRoutes = require("./routes/posts");
+const path = require("path");
 
-
-dotenv.config();
-
+// dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
+
+// for deploy
+app.use("/", express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 mongoose
   .connect(process.env.MONGODB_URI, {
