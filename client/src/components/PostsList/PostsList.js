@@ -11,12 +11,17 @@ const PostsList = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("-createdAt");
   const [limit, setLimit] = useState(10);
+  const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts({ page, search, sort, limit }).then((data) =>
       setPosts(data.posts)
     );
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuth(true);
+    } else setIsAuth(false);
   }, [page, search, sort, limit]);
 
   const updatePosts = useCallback(
@@ -98,6 +103,7 @@ const PostsList = () => {
                 Edit
               </button>
               <button
+                disabled={!isAuth}
                 onClick={() => handleDelete(post._id)}
                 className={styles.deletebtn}
               >
