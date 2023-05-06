@@ -31,7 +31,11 @@ app.use("/api/posts", postsRoutes);
 // for deploy
 app.use("/", express.static(path.join(__dirname, "client", "build")));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  if (!req.url.startsWith("/api/")) {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  } else {
+    next();
+  }
 });
 
 const rssFeedUrl = "https://lifehacker.com/rss";
