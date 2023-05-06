@@ -45,8 +45,9 @@
 
 .deletebtn {
   background-color: red;
+  border: 1px solid red;
   color: black;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .btn:hover {

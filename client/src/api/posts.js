@@ -54,7 +54,6 @@ export const updatePost = async (id, updatedData) => {
 export const deletePost = async (id) => {
   try {
     const response = await axios.delete(`/api/posts/${id}`, getConfig());
-    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error deleting post:", error);
