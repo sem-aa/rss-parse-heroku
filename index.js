@@ -29,8 +29,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("Error connecting to MongoDB:", error));
 
-app.use("api/auth", authRoutes);
-app.use("api/posts", postsRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postsRoutes);
 
 const rssFeedUrl = "https://lifehacker.com/rss";
 
