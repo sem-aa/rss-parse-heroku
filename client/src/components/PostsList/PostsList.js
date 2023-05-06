@@ -47,7 +47,7 @@ const PostsList = () => {
 
   return (
     <div>
-      <AdminPanel />
+      <AdminPanel setIsAuth={setIsAuth} />
       <div className={styles.filters}>
         <input
           className={styles.input}

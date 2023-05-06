@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AdminPanel.module.css";
 
-const AdminPanel = () => {
+const AdminPanel = ({ setIsAuth }) => {
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ const AdminPanel = () => {
   const logout = () => {
     localStorage.removeItem("token");
     setToken(null);
+    setIsAuth(false);
     navigate("/");
   };
 
