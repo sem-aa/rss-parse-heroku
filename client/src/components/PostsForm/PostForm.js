@@ -40,7 +40,8 @@ const PostForm = () => {
     navigate("/");
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (event) => {
+    event.preventDefault();
     if (id) {
       await deletePost(id);
       navigate("/");
