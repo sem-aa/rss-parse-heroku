@@ -16,7 +16,7 @@ const getConfig = () => {
 
 export const fetchPosts = async (params) => {
   try {
-    const response = await axios.get("/posts", { params });
+    const response = await axios.get("api/posts", { params });
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -25,7 +25,7 @@ export const fetchPosts = async (params) => {
 
 export const fetchPostById = async (id) => {
   try {
-    const response = await axios.get(`/posts/${id}`);
+    const response = await axios.get(`api/posts/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching post by ID:", error);
@@ -34,7 +34,11 @@ export const fetchPostById = async (id) => {
 
 export const updatePost = async (id, updatedData) => {
   try {
-    const response = await axios.put(`/posts/${id}`, updatedData, getConfig());
+    const response = await axios.put(
+      `api/posts/${id}`,
+      updatedData,
+      getConfig()
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -43,7 +47,7 @@ export const updatePost = async (id, updatedData) => {
 
 export const deletePost = async (id) => {
   try {
-    const response = await axios.delete(`/posts/${id}`, getConfig());
+    const response = await axios.delete(`api/posts/${id}`, getConfig());
     return response.data;
   } catch (error) {
     console.error("Error deleting post:", error);
@@ -52,7 +56,7 @@ export const deletePost = async (id) => {
 
 export const createPost = async (postData) => {
   try {
-    const response = await axios.post("/posts", postData, getConfig());
+    const response = await axios.post("api/posts", postData, getConfig());
     return response.data;
   } catch (error) {
     console.error("Error creating post:", error);
