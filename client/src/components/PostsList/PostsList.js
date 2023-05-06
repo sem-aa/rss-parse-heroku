@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { fetchPosts } from "../../api/posts";
+import { fetchPosts, deletePost } from "../../api/posts";
 import Post from "../Post/Post";
 import { useNavigate } from "react-router-dom";
 import AdminPanel from "../AdminPanel/AdminPanel";
@@ -31,6 +31,14 @@ const PostsList = () => {
     },
     [page, sort, limit]
   );
+
+  const handleDelete = async (id) => {
+    if (id) {
+      await deletePost(id);
+      setPosts((prevPosts) => prevPosts.filter((post) => post._id !== id));
+      navigate("/");
+    }
+  };
 
   return (
     <div>
@@ -82,12 +90,20 @@ const PostsList = () => {
         {posts?.map((post) => (
           <li key={post._id} className={styles.postWrapper}>
             <Post post={post} />
-            <button
-              className={styles.btn}
-              onClick={() => navigate(`posts/${post._id}/edit`)}
-            >
-              Edit
-            </button>
+            <div className={styles.btnContainer}>
+              <button
+                className={styles.btn}
+                onClick={() => navigate(`posts/${post._id}/edit`)}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(post._id)}
+                className={`${styles.btn} ${styles.deletebtn}`}
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>

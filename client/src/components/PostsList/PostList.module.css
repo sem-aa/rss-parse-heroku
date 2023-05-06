@@ -28,6 +28,11 @@
   border-radius: 4px;
 }
 
+.btnContainer {
+  display: flex;
+  align-items: center;
+}
+
 .btn {
   background-color: #007bff;
   color: #fff;
@@ -36,6 +41,12 @@
   border: 1px solid #007bff;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.deletebtn {
+  background-color: red;
+  color: black;
+  margin-right: 20px;
 }
 
 .btn:hover {

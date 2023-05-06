@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   createPost,
-  deletePost,
   fetchPostById,
   updatePost,
 } from "../../api/posts";
@@ -29,7 +28,6 @@ const PostForm = () => {
   };
 
   const handleSubmit = async (event) => {
-    console.log("handleSubmit update or create");
     event.preventDefault();
     if (id) {
       await updatePost(id, post);
@@ -39,12 +37,7 @@ const PostForm = () => {
     navigate("/");
   };
 
-  const handleDelete = async () => {
-    if (id) {
-      await deletePost(id);
-      navigate("/");
-    }
-  };
+
 
   return (
     <div className={styles.postFormWrapper}>
@@ -79,14 +72,6 @@ const PostForm = () => {
           <button type="submit" className={styles.btn}>
             {id ? "Update" : "Create"}
           </button>
-          {id && (
-            <button
-              onClick={handleDelete}
-              className={`${styles.btn} ${styles.deletebtn}`}
-            >
-              Delete
-            </button>
-          )}
         </div>
 
         {id && <Post post={post} />}

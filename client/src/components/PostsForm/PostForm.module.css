@@ -60,10 +60,6 @@
   font-size: 14px;
 }
 
-.deletebtn {
-  background-color: red;
-  color: black;
-}
 
 .btn:hover {
   background-color: #0056b3;
