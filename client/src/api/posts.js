@@ -1,7 +1,11 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://rss-parse.herokuapp.com";
+const isProduction = process.env.NODE_ENV === "production";
+const baseURL = isProduction
+  ? "https://rss-parse.herokuapp.com"
+  : "http://localhost:3001/api";
 
+axios.defaults.baseURL = baseURL;
 
 const getToken = () => {
   return localStorage.getItem("token");
@@ -19,7 +23,6 @@ const getConfig = () => {
 export const fetchPosts = async (params) => {
   try {
     const response = await axios.get("api/posts", { params });
-    console.log("by id", response);
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -29,7 +32,6 @@ export const fetchPosts = async (params) => {
 export const fetchPostById = async (id) => {
   try {
     const response = await axios.get(`api/posts/${id}`);
-    console.log("by id", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching post by ID:", error);

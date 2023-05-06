@@ -20,7 +20,6 @@ getAllPosts = async (req, res) => {
       .skip((parseInt(page) - 1) * parseInt(limit));
 
     const totalPosts = await Post.countDocuments(query);
-    console.log("getAllPosts", posts);
     res.json({
       posts,
       totalPages: Math.ceil(totalPosts / parseInt(limit)),
@@ -33,12 +32,10 @@ getAllPosts = async (req, res) => {
 
 getPostById = async (req, res) => {
   try {
-    console.log("req.params.id", req.params.id);
     const post = await Post.findById(req.params.id);
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
-    console.log("getPostById", post);
     res.json(post);
   } catch (error) {
     res.status(500).json({ message: "Error fetching post" });
@@ -57,7 +54,7 @@ createPost = async (req, res) => {
 
 updatePost = async (req, res) => {
   const { id } = req.params;
-  console.log("body", req.body, "id", id);
+
   try {
     const updatedPost = await Post.findByIdAndUpdate(id, req.body, {
       new: true,
@@ -65,7 +62,6 @@ updatePost = async (req, res) => {
     if (!updatedPost) {
       return res.status(404).json({ message: "Post not found" });
     }
-    console.log(updatedPost);
     res.json(updatedPost);
   } catch (error) {
     res.status(500).json({ message: "Error updating post" });
