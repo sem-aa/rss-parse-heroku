@@ -43,14 +43,23 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
 .deletebtn {
   background-color: red;
-  border: 1px solid red;
   color: black;
+  padding: 6px 12px;
+  font-size: 16px;
+  border: 1px solid red;
+  border-radius: 4px;
+  cursor: pointer;
   margin-left: 20px;
 }
 
-.btn:hover {
+.deletebtn:hover {
   background-color: #0056b3;
   border-color: #0056b3;
 }

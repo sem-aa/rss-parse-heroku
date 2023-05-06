@@ -99,7 +99,7 @@ const PostsList = () => {
               </button>
               <button
                 onClick={() => handleDelete(post._id)}
-                className={`${styles.btn} ${styles.deletebtn}`}
+                className={styles.deletebtn}
               >
                 Delete
               </button>
