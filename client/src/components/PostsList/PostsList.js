@@ -22,7 +22,7 @@ const PostsList = () => {
     if (token) {
       setIsAuth(true);
     } else setIsAuth(false);
-  }, [page, search, sort, limit]);
+  }, [page, search, sort, limit, isAuth]);
 
   const updatePosts = useCallback(
     (newParams) => {
