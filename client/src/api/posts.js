@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL_LOCAL = "http://localhost:3001/posts";
+// axios.defaults.baseURL = "http://localhost:3001";
 
 const getToken = () => {
   return localStorage.getItem("token");
@@ -16,7 +16,7 @@ const getConfig = () => {
 
 export const fetchPosts = async (params) => {
   try {
-    const response = await axios.get(URL_LOCAL, { params });
+    const response = await axios.get("/posts", { params });
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -25,7 +25,7 @@ export const fetchPosts = async (params) => {
 
 export const fetchPostById = async (id) => {
   try {
-    const response = await axios.get(`${URL_LOCAL}/${id}`);
+    const response = await axios.get(`/posts/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching post by ID:", error);
@@ -34,11 +34,7 @@ export const fetchPostById = async (id) => {
 
 export const updatePost = async (id, updatedData) => {
   try {
-    const response = await axios.put(
-      `${URL_LOCAL}/${id}`,
-      updatedData,
-      getConfig()
-    );
+    const response = await axios.put(`/posts/${id}`, updatedData, getConfig());
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
@@ -47,7 +43,7 @@ export const updatePost = async (id, updatedData) => {
 
 export const deletePost = async (id) => {
   try {
-    const response = await axios.delete(`${URL_LOCAL}/${id}`, getConfig());
+    const response = await axios.delete(`/posts/${id}`, getConfig());
     return response.data;
   } catch (error) {
     console.error("Error deleting post:", error);
@@ -56,7 +52,7 @@ export const deletePost = async (id) => {
 
 export const createPost = async (postData) => {
   try {
-    const response = await axios.post(`${URL_LOCAL}`, postData, getConfig());
+    const response = await axios.post("/posts", postData, getConfig());
     return response.data;
   } catch (error) {
     console.error("Error creating post:", error);
