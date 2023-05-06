@@ -16,7 +16,9 @@ const getConfig = () => {
 
 export const fetchPosts = async (params) => {
   try {
+    console.log('try fetch');
     const response = await axios.get("api/posts", { params });
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);

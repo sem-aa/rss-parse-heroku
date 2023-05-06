@@ -79,7 +79,7 @@ const PostsList = () => {
         </button>
       </div>
       <ul className={styles.container}>
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <li key={post._id} className={styles.postWrapper}>
             <Post post={post} />
             <button
