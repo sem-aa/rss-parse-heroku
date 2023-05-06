@@ -11,6 +11,7 @@ const getConfig = () => {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
+    withCredentials: true,
   };
 };
 
