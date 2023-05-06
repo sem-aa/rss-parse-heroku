@@ -15,11 +15,7 @@ const app = express();
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
 
-// for deploy
-app.use("/", express.static(path.join(__dirname, "client", "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -31,6 +27,12 @@ mongoose
 
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postsRoutes);
+
+// for deploy
+app.use("/", express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 const rssFeedUrl = "https://lifehacker.com/rss";
 
