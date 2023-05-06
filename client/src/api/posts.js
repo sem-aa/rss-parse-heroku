@@ -1,6 +1,7 @@
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://rss-parse.herokuapp.com";
+
 
 const getToken = () => {
   return localStorage.getItem("token");
@@ -18,6 +19,7 @@ const getConfig = () => {
 export const fetchPosts = async (params) => {
   try {
     const response = await axios.get("api/posts", { params });
+    console.log("by id", response);
     return response.data;
   } catch (error) {
     console.error("Error updating post:", error);
