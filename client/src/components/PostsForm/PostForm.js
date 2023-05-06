@@ -29,19 +29,17 @@ const PostForm = () => {
   };
 
   const handleSubmit = async (event) => {
+    console.log("handleSubmit update or create");
     event.preventDefault();
-
     if (id) {
       await updatePost(id, post);
     } else {
       await createPost(post);
     }
-
     navigate("/");
   };
 
-  const handleDelete = async (event) => {
-    event.preventDefault();
+  const handleDelete = async () => {
     if (id) {
       await deletePost(id);
       navigate("/");
