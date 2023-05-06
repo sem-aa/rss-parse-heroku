@@ -1,0 +1,35 @@
+.adminPanel {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  align-items: center;
+}
+
+.title {
+  font-size: larger;
+}
+
+.btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  height: 40px;
+}
+
+.logout {
+  background-color: red;
+  color: black
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
